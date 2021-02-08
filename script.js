@@ -16,22 +16,17 @@ fetch(url)
 .then(response => response.json())
 // Step-3, then pass the jsom as parameter and perform the function you want
 .then(json => {
-    json.forEach(element => {
-        // console.log(element.title);
-        // let listItem = document.createElement('li');
-        // listItem.innerHTML = element.title;
-        // listItem.classList.add("title_list")
-        // unorderedList.appendChild(listItem);    // Appending list item to the unordered list
-        inflateLayout(element);
-    });
+    json.forEach(element => inflateLayout(element));
 })
 .catch(e => console.error('Unable to load data due to this:' + e));    // Catch error if any
 
 
+
+// This is the method to inflate the layout and add the post
 const inflateLayout  = (post) => {
     let title = post.title;
     let content = post.body;
-    console.log(title)
+    // console.log(content)
 
     // Creating individual post container div
     const post_container = document.createElement('div');
@@ -63,6 +58,5 @@ const inflateLayout  = (post) => {
     post_title.innerText = title;
     post_content.innerText = content;
     image.src = "image/post_image.jpg";
-
-
 }
+
